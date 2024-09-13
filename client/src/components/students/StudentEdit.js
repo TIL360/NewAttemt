@@ -79,7 +79,7 @@ export default function StudentEdit() {
   
       if (newImage) {
           formData.append('image', newImage); // Append new image if available
-      }
+      } 
   
       try {
           await axios.patch(`http://localhost:3000/students/${id}`, formData, {
@@ -90,106 +90,106 @@ export default function StudentEdit() {
           });
   
           // Pass state while navigating
-          navigate('/studentlist', { state: { message: 'Student updated successfully!' } });
+          navigate('/dashboard/studentlist', { state: { message: 'Student updated successfully!' } });
       } catch (error) {
           console.error("Error updating student:", error);
       }
   };
+
+  const handleback = () => {
+    navigate('/dashboard/studentList');
+}
   
     return (
-        <div className="card">
-            <div className="card-header">
-                <h1>Edit Student</h1>
-            </div>
-            <div className="card-body">
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="adm_no" className="form-label">Admission Number</label>
-                        <input type="text" className="form-control" id="adm_no" name="adm_no" value={student.adm_no} onChange={handleChange} disabled />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Name</label>
-                        <input type="text" className="form-control" id="name" name="name" value={student.name} onChange={handleChange} required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="standard" className="form-label">Standard</label>
-                        <select
-                            className="form-select"
-                            id="standard"
-                            name="standard"
-                            value={student.standard}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="">Select Standard...</option>
-                            {standards.map((std) => (
-                                <option key={std.sid} value={std.standard}>
-                                    {std.standard}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="monthly_fee" className="form-label">Monthly Fee</label>
-                        <input type="text" className="form-control" id="monthly_fee" name="monthly_fee" value={student.monthly_fee} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="status" className="form-label">Status</label>
-                        <input type="text" className="form-control" id="status" name="status" value={student.status} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="father" className="form-label">Father's Name</label>
-                        <input type="text" className="form-control" id="father" name="father" value={student.father} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="adm_date" className="form-label">Admission Date</label>
-                        <input type="date" className="form-control" id="adm_date" name="adm_date" value={student.adm_date} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="adm_standard" className="form-label">Admission Standard</label>
-                        <select
-                            className="form-select"
-                            id="adm_standard"
-                            name="adm_standard"
-                            value={student.adm_standard}
-                            onChange={handleChange}
-                        >
-                            <option value="">Select Admission Standard...</option>
-                            {standards.map((std) => (
-                                <option key={std.sid} value={std.standard}>
-                                    {std.standard}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="mobile" className="form-label">Mobile</label>
-                        <input type="text" className="form-control" id="mobile" name="mobile" value={student.mobile} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="address" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="address" name="address" value={student.address} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email</label>
-                        <input type="email" className="form-control" id="email" name="email" value={student.email} onChange={handleChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="image" className="form-label">Image</label>
-                        <input
-                            className="form-control"
-                            type="file"
-                            id="image"
-                            onChange={handleImageChange}
-                        />
-                        {student.image && (
-                            <img src={`http://localhost:3000/${student.image}`} alt={student.name} style={{ width: "100px", height: "100px" }} />
-                        )}
-                    </div>
-                    <button type="submit" className="btn btn-primary">Update Student</button>
-                    <button type="button" className="btn btn-secondary ms-2" onClick={() => navigate('/studentlist')}>Cancel</button>
-                </form>
-            </div>
+        <div>
+            <h1 className='text-center'>Edit Student</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="adm_no"><b>Admission Number</b></label>
+                    <input type="text" className="form-control" id="adm_no" name="adm_no" value={student.adm_no} onChange={handleChange} disabled />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="name"><b>Name</b></label>
+                    <input type="text" className="form-control" id="name" name="name" value={student.name} onChange={handleChange} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="standard"><b>Standard</b></label>
+                    <select
+                        className="form-select"
+                        id="standard"
+                        name="standard"
+                        value={student.standard}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="">Select Standard...</option>
+                        {standards.map((std) => (
+                            <option key={std.sid} value={std.standard}>
+                                {std.standard}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="monthly_fee"><b>Monthly Fee</b></label>
+                    <input type="text" className="form-control" id="monthly_fee" name="monthly_fee" value={student.monthly_fee} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="status"><b>Status</b></label>
+                    <input type="text" className="form-control" id="status" name="status" value={student.status} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="father"><b>Father's Name</b></label>
+                    <input type="text" className="form-control" id="father" name="father" value={student.father} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="adm_date"><b>Admission Date</b></label>
+                    <input type="date" className="form-control" id="adm_date" name="adm_date" value={student.adm_date} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="adm_standard"><b>Admission Standard</b></label>
+                    <select
+                        className="form-select"
+                        id="adm_standard"
+                        name="adm_standard"
+                        value={student.adm_standard}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Admission Standard...</option>
+                        {standards.map((std) => (
+                            <option key={std.sid} value={std.standard}>
+                                {std.standard}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="mobile"><b>Mobile</b></label>
+                    <input type="text" className="form-control" id="mobile" name="mobile" value={student.mobile} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="address"><b>Address</b></label>
+                    <input type="text" className="form-control" id="address" name="address" value={student.address} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email"><b>Email</b></label>
+                    <input type="email" className="form-control" id="email" name="email" value={student.email} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="image"><b>Image</b></label>
+                    <input
+                        className="form-control"
+                        type="file"
+                        id="image"
+                        onChange={handleImageChange}
+                    />
+                    {student.image && (
+                        <img src={`http://localhost:3000/${student.image}`} alt={student.name} style={{ width: "100px", height: "100px", marginTop: "10px" }} />
+                    )}
+                </div>
+                <button type="submit" className="btn btn-primary">Update Student</button>
+                <button type="button" className="btn btn-secondary ms-2" onClick={handleback}>Back</button>
+            </form>
         </div>
     );
 }

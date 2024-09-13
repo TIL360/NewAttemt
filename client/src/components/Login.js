@@ -26,7 +26,7 @@ const Login = () => {
             setToken(response.data.token);
             console.log('Token received:', response.data.token);
 
-            navigate('/'); // Navigate to Home.js
+            navigate('/dashboard'); // Navigate to Home.js
         } catch (err) {
             setError(err.response ? err.response.data.message : 'Login failed. Please try again.');
         }

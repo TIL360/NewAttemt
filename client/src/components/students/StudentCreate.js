@@ -69,7 +69,9 @@ export default function StudentCreate() {
       console.error("Error creating student:", err);
     }
   };
-
+  const handleback = (e) => {
+    navigate('/dashboard/studentList');
+}
   return (
     <>
       <div className="card col-md-8 mx-auto">
@@ -86,6 +88,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Adm No..."
                   onChange={(e) => setAdmNo(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
               <div className="col-md-6">
@@ -95,6 +98,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Student Name..."
                   onChange={(e) => setName(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
             </div>
@@ -133,6 +137,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Monthly Fee..."
                   onChange={(e) => setMonthlyFee(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
               <div className="col-md-6">
@@ -142,6 +147,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Status..."
                   onChange={(e) => setStatus(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
             </div>
@@ -154,6 +160,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Father's Name..."
                   onChange={(e) => setFather(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
               <div className="col-md-6">
@@ -162,6 +169,7 @@ export default function StudentCreate() {
                   type="date"
                   className="form-control"
                   onChange={(e) => setAdmDate(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
             </div>
@@ -189,6 +197,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Mobile..."
                   onChange={(e) => setMobile(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
             </div>
@@ -201,6 +210,7 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Address..."
                   onChange={(e) => setAddress(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
               <div className="col-md-6">
@@ -210,12 +220,14 @@ export default function StudentCreate() {
                   className="form-control"
                   placeholder="Email..."
                   onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="off"
                 />
               </div>
             </div>
             
             <div className="mt-3">
               <button className="btn btn-primary">Add Record</button>
+              <button type="submit" className="btn btn-secondary ml-1" onClick={handleback}>Back</button>
             </div>
           </form>
         </div>

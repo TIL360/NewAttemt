@@ -1,32 +1,65 @@
-import React from 'react'
-import { FaGraduationCap, FaHome } from 'react-icons/fa'
+// sidebar.js
 
-const SideBar = () => {
-  return (
-    <div className='w-64 bg-black fixed h-full py-2'>
-      <div>
-        <h1 className='text-2x text-white font-bold'>Admin Dashboard</h1>
-      </div>
-      <hr />
-      <ul className='mt-3 text-white font-bold'>
-        <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-          <a href="/" className='px-3'>
-            <FaHome className='inline-block w-6 h-6 mr-2 -mt-2'></FaHome>
-            Home
-          </a>
-        </li>
+import React from 'react';
+import { FaBars, FaUserGraduate, FaWallet, FaChalkboard, FaClock, FaUserTie,FaClipboardList, FaPenSquare } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
+import '../CSS/sidebar.css';
 
-        <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2'>
-          <a href="/studentlist" className='px-3'>
-          
-            <FaGraduationCap className='inline-block w-6 h-6 mr-2 -mt-2'></FaGraduationCap>
-            Students
-          </a>
-        </li>
 
-      </ul>
-    </div>
-  )
-}
+// For Students:
 
-export default SideBar
+// - FaUserGraduate (user graduate icon)
+// - FaChild (child icon)
+// - FaPencil (pencil icon, can represent learning or writing)
+// - FaBook (book icon, represents education or reading)
+// - FaIdCard (ID card icon, can represent student ID)
+
+// For Fee Details:
+
+// - FaRupeeSign (rupee sign icon, represents currency or money)
+// - FaCreditCard (credit card icon, represents payment method)
+// - FaWallet (wallet icon, represents financial transactions)
+// - FaFileInvoice (file invoice icon, represents billing or invoices)
+// - FaMoneyCheck (money check icon, represents payment or transactions)
+
+const Sidebar = ({ toggle, isOpen }) => {
+    const menuItem = [
+{ path: "/dashboard/studentlist", name: "Students", icon: <FaUserGraduate /> },
+{ path: "/dashboard/feedetail", name: "Fee", icon: <FaWallet /> },
+{ path: "/dashboard/stafflist", name: "Staff", icon: <FaUserTie  /> },
+{ path: "/dashboard/attendance", name: "Attendance", icon: <FaClock /> },
+{ path: "/dashboard/standards", name: "Classes", icon: <FaChalkboard /> },
+{ path: "/dashboard/resultprep", name: "Result Prepare", icon: <FaPenSquare /> },
+{ path: "/dashboard/result", name: "Result", icon: <FaClipboardList /> },
+
+
+    ];
+
+    return (
+            
+        <div>
+
+        
+        <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
+            <div className="top_section">
+                
+            <div className="bars" onClick={toggle}>
+                    <FaBars />
+                </div>
+                
+            </div>
+            {
+                menuItem.map((item, index) => (
+                    <NavLink to={item.path} key={index} className="link" activeclassname="active">
+                        <div className="icon">{item.icon}</div>
+                        <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
+                    </NavLink>
+                ))
+            }
+        </div>
+        </div>
+
+    );
+};
+
+export default Sidebar;

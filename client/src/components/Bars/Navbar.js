@@ -1,22 +1,39 @@
-import React from 'react'
-import { FaBars, FaSearch } from 'react-icons/fa'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className='bg-black px-4 py-3 flex justify-between ml-64'>
-      <div className='flex items-center text-xl'>
-      <FaBars className='text-white me-4 cursoe-pointer'/>
-      <span className='text-white font-semibold'>E-Commerece</span>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="#">Navbar</Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
+            <Link className="nav-link active" to="#">Active</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="#">Link</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="#">Link</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link disabled" to="#">Disabled</Link>
+          </li>
+        </ul>
       </div>
-      <div className='flex items-center gap-x-5'>
-        <div className='relative md:w-65'>
-          <span className='relative md: absoloute inset-y-0 left-0 flex item-cener pl-2'><button><FaSearch /></button></span>
-          <input type='text' />
-        </div>
+    </nav>
+  );
+};
 
-      </div>
-    </div>
-  )
-}
-
-export default Navbar
+export default Navbar;
