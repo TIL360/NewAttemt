@@ -29,7 +29,7 @@ export default function Result() {
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/resultprep/selectboxes", {
+        const response = await axios.get(`http://localhost:3000/resultprep/selectboxes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

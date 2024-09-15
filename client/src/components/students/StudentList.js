@@ -17,7 +17,7 @@ export default function StudentList() {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/students", {
+        const response = await axios.get(`http://theoaksserver.theoaksschool.xyz/students`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -38,7 +38,7 @@ export default function StudentList() {
     const confirmDelete = window.confirm("Are you sure you want to delete this record?");
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:3000/students/${admNo}`, {
+        await axios.delete(`http://theoaksserver.theoaksschool.xyz/students/${admNo}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -128,7 +128,7 @@ export default function StudentList() {
                 <td className="d-flex justify-content-center align-items-center" style={{ height: "70px" }}>
                   {student.image && (
                     <img
-                      src={`http://localhost:3000/${student.image}`}
+                      src={`http://theoaksserver.theoaksschool.xyz/${student.image}`}
                       alt={student.name}
                       style={{ width: "70px", height: "70px" }}
                     />

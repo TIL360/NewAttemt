@@ -12,9 +12,19 @@ app.use(cors({
 }));
 
 const studentRoutes = require('./api/routes/students/students');
-const feeRoutes = require('./api/routes/fee');
+const feeRoutes = require('./api/routes/fee/fee');
 const userRoutes = require('./api/routes/users/user');
 const classesRoutes = require('./api/routes/classes/classes');
+const feePaidRoutes = require('./api/routes/fee/feepaid');
+const unpaidRoutes = require('./api/routes/fee/unpaid');
+const staffRoutes = require('./api/routes/staff/staff');
+const salaryRoutes = require('./api/routes/staff/salary');
+const resultprepRoutes = require('./api/routes/result/resultprep');
+const attendanceRoutes = require('./api/routes/attendance/attendance');
+const attsheetRoutes = require('./api/routes/attendance/attsheet');
+const resultRoutes = require('./api/routes/result/result');
+
+
 
 // MySQL connection
 const db = mysql.createConnection({
@@ -44,6 +54,15 @@ app.use('/students', studentRoutes);
 app.use('/fee', feeRoutes);
 app.use('/user', userRoutes);
 app.use('/classes', classesRoutes);
+app.use('/feepaid', feePaidRoutes);
+app.use('/unpaid', unpaidRoutes);
+app.use('/staff', staffRoutes);
+app.use('/salary', salaryRoutes);
+app.use('/resultprep', resultprepRoutes);
+app.use('/attendance', attendanceRoutes);
+app.use('/attsheet', attsheetRoutes);
+app.use('/result', resultRoutes);
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

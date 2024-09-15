@@ -29,6 +29,7 @@ import PRPdf from './components/Result/PRPdf';
 import Payment from './components/Payment/Payment';
 import SearchedInvoice from './components/Payment/SearchedInvoice';
 import Navbar from './components/Bars/Navbar';
+import Registration from './components/Registration';
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/navbar" element={<Navbar />} />
           <Route path='/searchedinvoice/:admNo' element={<SearchedInvoice/>} />
+          <Route path='/registration' element={<Registration />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={

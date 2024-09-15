@@ -22,7 +22,8 @@ export default function FeePaid() {
   useEffect(() => {
     const fetchFeePaidDetails = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/feepaid", {
+        const response = await axios.get(`http://localhost:3000/feepaid`, {
+
           headers: {
             Authorization: `Bearer ${token}`,
           },

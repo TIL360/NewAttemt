@@ -14,7 +14,7 @@ export default function StaffList() {
     useEffect(() => {
         const fetchStaff = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/staff", {
+                const response = await axios.get(`http://localhost:3000/staff`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(response.data);
@@ -68,7 +68,7 @@ export default function StaffList() {
     const handlesalries = async () => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/salary/insert-salary",
+                `http://localhost:3000/salary/insert-salary`,
                 {},
                 {
                     headers: { Authorization: `Bearer ${token}` },

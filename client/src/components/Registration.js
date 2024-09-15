@@ -13,7 +13,7 @@ const Registration = () => {
         e.preventDefault(); 
         console.log('Submitting form with:', { username, password, usertype });
     
-        axios.post('http://localhost:3000/user/signup', { username, password, usertype })
+        axios.post(`http://localhost:3000/user/signup`, { username, password, usertype })
             .then(res => {
                 console.log('Response:', res.data); 
                 navigate('/');

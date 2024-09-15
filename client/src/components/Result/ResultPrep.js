@@ -43,7 +43,7 @@ const ResultPrep = () => {
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/resultprep/selectboxes", {
+        const response = await axios.get(`http://localhost:3000/resultprep/selectboxes`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (response.data.years) {
@@ -69,7 +69,7 @@ const ResultPrep = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/resultprep/result",
+        `http://localhost:3000/resultprep/result`,
         {
           year,
           month,
@@ -95,7 +95,7 @@ const ResultPrep = () => {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        "http://localhost:3000/resultprep/marks",
+        `http://localhost:3000/resultprep/marks`,
         {
           standard,
           examYear,
@@ -151,7 +151,7 @@ const handlePublishResult = async (e) => {
   e.preventDefault();
   try {
     const response = await axios.post(
-      "http://localhost:3000/result/publish-result",
+      `http://localhost:3000/result/publish-result`,
       {
         year: examYear, // Use selected exam year
         month: examName, // Use selected exam name
@@ -174,7 +174,7 @@ const handlePendResult = async (e) => {
   e.preventDefault();
   try {
     const response = await axios.post(
-      "http://localhost:3000/result/pend-result",
+      `http://localhost:3000/result/pend-result`,
       {
         year: examYear, // Use selected exam year
         month: examName, // Use selected exam name

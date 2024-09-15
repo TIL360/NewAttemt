@@ -22,36 +22,42 @@ export default function FeeDetail() {
   const recordsPerPage = 10; // items to display per page
 
   useEffect(() => {
-    const fetchinvoices = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/fee", {
-          headers: {
+  const fetchInvoices = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/fee`, {
+        headers: {
             Authorization: `Bearer ${token}`,
-          },
-        });
-        if (Array.isArray(response.data.data)) {
+        },
+    });
+    
+
+      if (Array.isArray(response.data.data)) {
           setInvdetails(response.data.data);
-          const standards = [
-            ...new Set(response.data.data.map((inv) => inv.FeeStandard)),
-          ];
-          setStandards(standards);
-          const years = [...new Set(response.data.data.map((inv) => inv.fyear))];
-          setYears(years);
-          const months = [...new Set(response.data.data.map((inv) => inv.fmonth))];
-          setMonths(months);
-        } else {
-          console.error(
-            "Expected an array of invoices, but got:",
-            response.data.data
-          );
-        }
-      } catch (error) {
-        setError(error);
-        console.error("Error fetching students:", error);
+        const standards = [
+          ...new Set(response.data.data.map((inv) => inv.FeeStandard)),
+        ];
+        setStandards(standards);
+        const years = [...new Set(response.data.data.map((inv) => inv.fyear))];
+        setYears(years);
+        const months = [...new Set(response.data.data.map((inv) => inv.fmonth))];
+        setMonths(months);
+      } else {
+        console.error(
+          "Expected an array of invoices, but got:",
+          response.data.data
+        );
       }
-    };
-    fetchinvoices();
-  }, [token]);
+    } catch (error) {
+      setError(error);
+      console.error("Error fetching invoices:", error);
+      
+
+    }
+  };
+  
+  fetchInvoices();
+}, [token]);
+
 
   const handleCollect = (idf) => {
     navigate(`/dashboard/feecollection/${idf}`);

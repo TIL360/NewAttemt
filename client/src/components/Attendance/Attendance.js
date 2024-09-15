@@ -3,7 +3,6 @@ import axios from "axios";
 import userContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
-
 const Attendance = () => {
   const [attendanceRecords, setAttendanceRecords] = useState([]);
   const { token } = useContext(userContext);
@@ -11,10 +10,12 @@ const Attendance = () => {
   const [message, setMessage] = useState("");
   const [search, setSearch] = useState("");
 
+
+
   const handleInitiateAttendance = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/attendance/initiate-attendance",
+      await axios.post(
+        `http://localhost:3000/attendance/initiate-attendance`,
         {},
         {
           headers: {
@@ -22,7 +23,7 @@ const Attendance = () => {
           },
         }
       );
-      alert(`Inserted Records: ${response.data.insertedRecords}`);
+      alert(`Successfully initiated attendance`);
       navigate("/dashboard");
     } catch (error) {
       console.error("Error inserting attendance:", error);
@@ -30,10 +31,12 @@ const Attendance = () => {
     }
   };
 
+
+
   useEffect(() => {
     const fetchAttendanceRecords = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/attendance", {
+        const response = await axios.get(`http://localhost:3000/attendance`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -47,13 +50,14 @@ const Attendance = () => {
         console.error("Error fetching attendance records:", error);
       }
     };
+  
     fetchAttendanceRecords();
   }, [token]);
 
   const updateAttendance = async (att_id, status) => {
     try {
       await axios.patch(
-        `http://localhost:3000/attendance/update/${att_id}`,
+        `http://localhost:3000/attendance/update/${att_id}`, // Use the API_URL
         { attendance: status },
         {
           headers: {
@@ -67,7 +71,7 @@ const Attendance = () => {
         )
       );
       setMessage(`Attendance updated successfully for ID ${att_id}`);
-      const response = await axios.get("http://localhost:3000/attendance", {
+      const response = await axios.get(`http://localhost:3000/attendance`, { // Use the API_URL
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -90,9 +94,11 @@ const Attendance = () => {
       record.name.toLowerCase().includes(search.toLowerCase())
     );
   });
-const handleclick = (e) => {
-  navigate('/dashboard/attreport');
-}
+
+  const handleclick = (e) => {
+    navigate('/dashboard/attreport');
+  };
+
   return (
     <>
       <div>
@@ -114,7 +120,7 @@ const handleclick = (e) => {
             </label>
             <input
               type="text"
-              className="form-control border-pill border-3 border-info "
+              className="form-control border-pill border-3 border-info"
               id="searchInput"
               value={search}
               onChange={handleSearch}
@@ -125,10 +131,8 @@ const handleclick = (e) => {
           className="btn btn-primary ml-4"
           onClick={handleclick}
           >Attendance Report</button>
-   
         </div>
-        <div className="row align-items-center">
-               </div>
+        <div className="row align-items-center"></div>
       </div>
       <hr />
       <div>

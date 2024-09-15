@@ -37,7 +37,7 @@ export default function StudentEdit() {
 
         const fetchStandards = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/classes', {
+                const response = await axios.get(`http://localhost:3000/classes`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 console.log(response.data); // Check what data you're receiving
