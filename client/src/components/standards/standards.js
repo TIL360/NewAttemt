@@ -16,7 +16,7 @@ export default function Standards() {
   useEffect(() => {
     const fetchStandards = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/classes`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/classes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,7 +37,7 @@ export default function Standards() {
     const confirmDelete = window.confirm("Are you sure you want to delete this standard?");
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:3000/classes/${sid}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/classes/${sid}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

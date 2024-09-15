@@ -27,7 +27,7 @@ export default function StudentEdit() {
     useEffect(() => {
         const fetchStudent = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/students/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/students/${id}`, { headers: { Authorization: `Bearer ${token}` } });
                 console.log("Fetched student data:", response.data);
                 setStudent(response.data);
             } catch (error) {
@@ -37,7 +37,7 @@ export default function StudentEdit() {
 
         const fetchStandards = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/classes`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/classes`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 console.log(response.data); // Check what data you're receiving
@@ -82,7 +82,7 @@ export default function StudentEdit() {
       } 
   
       try {
-          await axios.patch(`http://localhost:3000/students/${id}`, formData, {
+          await axios.patch(`${process.env.REACT_APP_API_URL}/students/${id}`, formData, {
               headers: {
                   'Content-Type': 'multipart/form-data',
                   'Authorization': `Bearer ${token}`
@@ -184,7 +184,7 @@ export default function StudentEdit() {
                         onChange={handleImageChange}
                     />
                     {student.image && (
-                        <img src={`http://localhost:3000/${student.image}`} alt={student.name} style={{ width: "100px", height: "100px", marginTop: "10px" }} />
+                        <img src={`${process.env.REACT_APP_API_URL}/${student.image}`} alt={student.name} style={{ width: "100px", height: "100px", marginTop: "10px" }} />
                     )}
                 </div>
                 <button type="submit" className="btn btn-primary">Update Student</button>

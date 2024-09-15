@@ -19,7 +19,7 @@ export default function StandardCreate() {
         e.preventDefault();
         try {
             // Sending POST request
-            await axios.post(`http://localhost:3000/classes`, { standard }, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/classes`, { standard }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setSuccessMessage('Standard created successfully!');

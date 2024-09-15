@@ -15,7 +15,7 @@ export default function LeavesEdit() {
     useEffect(() => {
         const fetchSalaryInfo = async () => {
           try {
-            const response = await axios.get(`http://localhost:3000/salary/${salaryid}`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/salary/${salaryid}`, {
               headers: { Authorization: `Bearer ${token}` },
             });
             setLeaveDays(response.data.leave_availed);
@@ -40,7 +40,7 @@ export default function LeavesEdit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.patch(`http://localhost:3000/salary/update-leaves/${salaryid}`, {
+          const response = await axios.patch(`${process.env.REACT_APP_API_URL}/salary/update-leaves/${salaryid}`, {
             leave_availed: leaveDays,
             security: security, // Add security field
           }, {

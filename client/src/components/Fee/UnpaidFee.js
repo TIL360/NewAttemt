@@ -16,7 +16,7 @@ export default function UnpaidFee() {
   useEffect(() => {
     const fetchFeePaidDetails = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/unpaid", {
+        const response = await axios.get("${process.env.REACT_APP_API_URL}/unpaid", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

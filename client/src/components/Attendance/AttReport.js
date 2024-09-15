@@ -20,17 +20,17 @@ export default function AttReport() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const standardsResponse = await axios.get(`http://localhost:3000/attendance/standards`, {
+        const standardsResponse = await axios.get(`${process.env.REACT_APP_API_URL}/attendance/standards`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setStandards(standardsResponse.data);
 
-        const yearsResponse = await axios.get(`http://localhost:3000/attendance/years`, {
+        const yearsResponse = await axios.get(`${process.env.REACT_APP_API_URL}/attendance/years`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setYears(yearsResponse.data);
 
-        const monthsResponse = await axios.get(`http://localhost:3000/attendance/months`, {
+        const monthsResponse = await axios.get(`${process.env.REACT_APP_API_URL}/attendance/months`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setMonths(monthsResponse.data);
@@ -45,7 +45,7 @@ export default function AttReport() {
   const handleFetchAttendance = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/attsheet?attstandard=${selectedStandard}&attyear=${selectedYear}&attmonth=${selectedMonth}`, {
+        `${process.env.REACT_APP_API_URL}/attsheet?attstandard=${selectedStandard}&attyear=${selectedYear}&attmonth=${selectedMonth}`, {
           headers: { Authorization: `Bearer ${token}` }
         }
       ); 

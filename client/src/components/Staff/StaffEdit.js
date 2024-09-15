@@ -22,7 +22,7 @@ export default function StaffEdit() {
     useEffect(() => {
         const fetchStaff = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/staff/${staffid}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/staff/${staffid}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log("Fetched staff data:", response.data); // Add this line
@@ -58,7 +58,7 @@ export default function StaffEdit() {
         }
         
         try {
-            const response = await axios.patch(`http://localhost:3000/staff/${staffid}`, formData, {
+            const response = await axios.patch(`${process.env.REACT_APP_API_URL}/staff/${staffid}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
@@ -120,7 +120,7 @@ export default function StaffEdit() {
                             <label><b>Image</b></label>
                             <input type="file" className="form-control" onChange={handleImageChange} />
                             {staffData.image && (
-                                <img src={`http://localhost:3000/${staffData.image}`} alt="Current" style={{ width: "100px", height: "100px", marginTop: "10px" }} />
+                                <img src={`${process.env.REACT_APP_API_URL}/${staffData.image}`} alt="Current" style={{ width: "100px", height: "100px", marginTop: "10px" }} />
                             )}
                         </div>
                     </div>

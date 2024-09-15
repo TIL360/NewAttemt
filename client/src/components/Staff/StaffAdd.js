@@ -31,7 +31,7 @@ export default function StaffAdd() {
         Object.entries(staffData).forEach(([key, value]) => formData.append(key, value));
 
         try {
-            await axios.post(`http://localhost:3000/staff`, formData, { 
+            await axios.post(`${process.env.REACT_APP_API_URL}/staff`, formData, { 
                 headers: { 
                     'Content-Type': 'multipart/form-data', 
                     Authorization: `Bearer ${token}` 

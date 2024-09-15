@@ -24,7 +24,7 @@ export default function FeeCollection() {
     useEffect(() => {
         const fetchInvoices = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/fee/${idf}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/fee/${idf}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 console.log("Fetched student data:", response.data);
@@ -61,7 +61,7 @@ export default function FeeCollection() {
         console.log("Updating data with:", dataToUpdate);  // Log the data being sent
         
         try {
-            const response = await axios.patch(`http://localhost:3000/fee/${idf}`, dataToUpdate, {
+            const response = await axios.patch(`${process.env.REACT_APP_API_URL}/fee/${idf}`, dataToUpdate, {
                 headers: { Authorization: `Bearer ${token}` }
             });
         
@@ -100,7 +100,7 @@ const handleback = (e)=>{
                         <td rowSpan="6">
                             {feedetail.image && (
                                 <img className="img-fluid"
-                                     src={`http://localhost:3000/${feedetail.image}`}
+                                     src={`${process.env.REACT_APP_API_URL}/${feedetail.image}`}
                                      alt={feedetail.name}
                                      style={{ width: "400px", height: "400px" }}
                                 />

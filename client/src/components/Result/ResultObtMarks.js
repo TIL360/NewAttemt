@@ -24,7 +24,7 @@ const ResultObtMarks = () => {
     useEffect(() => {
         const fetchMarks = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/result/results/${resultid}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/result/results/${resultid}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 console.log(response.data);
@@ -44,7 +44,7 @@ const ResultObtMarks = () => {
     const handleSubmitMarks = async (event) => {
         event.preventDefault();
         try {
-            await axios.patch(`http://localhost:3000/result/results/${resultid}`, marks, {
+            await axios.patch(`${process.env.REACT_APP_API_URL}/result/results/${resultid}`, marks, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             navigate('/dashboard/result', { state: { message: "Marks updated successfully!" } });

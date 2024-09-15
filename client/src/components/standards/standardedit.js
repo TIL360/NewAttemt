@@ -14,7 +14,7 @@ export default function StandardEdit() {
     useEffect(() => { 
         const fetchStandard = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/classes/${sid}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/classes/${sid}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -38,7 +38,7 @@ export default function StandardEdit() {
         e.preventDefault();
         console.log("Standard data being sent:", standard); // Log the data being updated
         try {
-          await axios.put(`http://localhost:3000/classes/${sid}`, { standard: standard.standard }, {
+          await axios.put(`${process.env.REACT_APP_API_URL}/classes/${sid}`, { standard: standard.standard }, {
             headers: { Authorization: `Bearer ${token}`, },
           });
           setSuccessMessage('Standard updated successfully!');

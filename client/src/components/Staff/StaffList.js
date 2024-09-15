@@ -14,7 +14,7 @@ export default function StaffList() {
     useEffect(() => {
         const fetchStaff = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/staff`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/staff`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(response.data);
@@ -30,7 +30,7 @@ export default function StaffList() {
         const confirmMessage = "Are you sure you want to delete this staff member?";
         if (window.confirm(confirmMessage)) {
             try {
-                await axios.delete(`http://localhost:3000/staff/${staffId}`, {
+                await axios.delete(`${process.env.REACT_APP_API_URL}/staff/${staffId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 alert("Staff member deleted successfully.");
@@ -68,7 +68,7 @@ export default function StaffList() {
     const handlesalries = async () => {
         try {
             const response = await axios.post(
-                `http://localhost:3000/salary/insert-salary`,
+                `${process.env.REACT_APP_API_URL}/salary/insert-salary`,
                 {},
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -127,7 +127,7 @@ export default function StaffList() {
                                 <td>{s.mobile}</td>
                                 <td className="text-center">
                                     <img
-                                        src={`http://localhost:3000/${s.image}`} 
+                                        src={`${process.env.REACT_APP_API_URL}/${s.image}`} 
                                         alt="Current" 
                                         className="text-center"
                                         style={{ width: "70px", height: "70px", marginTop: "2px" }} 

@@ -29,7 +29,7 @@ export default function Result() {
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/resultprep/selectboxes`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/resultprep/selectboxes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -54,7 +54,7 @@ export default function Result() {
     const fetchData = async () => {
         if (selectedValues.year && selectedValues.month && selectedValues.standard) {
             try {
-                const response = await axios.get(`http://localhost:3000/result`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/result`, {
                     params: {
                         year: selectedValues.year,
                         month: selectedValues.month,

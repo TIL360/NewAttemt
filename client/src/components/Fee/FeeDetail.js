@@ -24,7 +24,7 @@ export default function FeeDetail() {
   useEffect(() => {
   const fetchInvoices = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/fee`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/fee`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -115,7 +115,7 @@ export default function FeeDetail() {
 
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:3000/fee/${idf}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/fee/${idf}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -134,7 +134,7 @@ export default function FeeDetail() {
   const handleInsertFees = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/fee/insert-fees",
+        "${process.env.REACT_APP_API_URL}/fee/insert-fees",
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

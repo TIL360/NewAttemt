@@ -15,7 +15,7 @@ const Attendance = () => {
   const handleInitiateAttendance = async () => {
     try {
       await axios.post(
-        `http://localhost:3000/attendance/initiate-attendance`,
+        `${process.env.REACT_APP_API_URL}/attendance/initiate-attendance`,
         {},
         {
           headers: {
@@ -36,7 +36,7 @@ const Attendance = () => {
   useEffect(() => {
     const fetchAttendanceRecords = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/attendance`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/attendance`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -57,7 +57,7 @@ const Attendance = () => {
   const updateAttendance = async (att_id, status) => {
     try {
       await axios.patch(
-        `http://localhost:3000/attendance/update/${att_id}`, // Use the API_URL
+        `${process.env.REACT_APP_API_URL}/attendance/update/${att_id}`, // Use the API_URL
         { attendance: status },
         {
           headers: {
@@ -71,7 +71,7 @@ const Attendance = () => {
         )
       );
       setMessage(`Attendance updated successfully for ID ${att_id}`);
-      const response = await axios.get(`http://localhost:3000/attendance`, { // Use the API_URL
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/attendance`, { // Use the API_URL
         headers: {
           Authorization: `Bearer ${token}`,
         },

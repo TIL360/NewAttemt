@@ -22,7 +22,7 @@ export default function Salary() {
     useEffect(() => {
         const fetchSalaries = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/salary`, { 
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/salary`, { 
                     headers: { 
                         Authorization: `Bearer ${token}`, 
                     }, 

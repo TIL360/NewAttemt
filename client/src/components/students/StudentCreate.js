@@ -27,7 +27,7 @@ export default function StudentCreate() {
   useEffect(() => {
     const fetchStandards = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/classes`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/classes`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         console.log(response.data); // Check what data you're receiving
@@ -58,7 +58,7 @@ export default function StudentCreate() {
     formData.append('email', email);
 
     try {
-      await axios.post(`http://localhost:3000/students`, formData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/students`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
